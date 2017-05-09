@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: steps
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  body       :string           not null
+#  todoId     :integer          not null
+#  done       :boolean          default("false")
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyString
+  todoId: 1
+  done: false
+
+two:
+  title: MyString
+  body: MyString
+  todoId: 1
+  done: false
