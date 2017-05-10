@@ -11,22 +11,17 @@ class StepForm extends React.Component {
       title: "",
       body: "",
       done: false,
-      todoId: this.props.todoId
+      todo_id: this.props.todo_id
     };
   }
 
   addStep(event) {
     event.preventDefault()
-    let uniqId = this.uniqueId();
+    this.props.createStep(this.state);
     this.setState({
-      id: uniqId
-    }, () => {
-      this.props.receiveStep(this.state);
-      this.setState({
-        body: "",
-        title: "",
-        id: null
-      })
+      body: "",
+      title: "",
+      id: null
     })
   }
 
@@ -42,25 +37,23 @@ class StepForm extends React.Component {
     })
   }
 
-  uniqueId() {
-    return new Date().getTime();
-  }
-
   render() {
     return(
-      <form onSubmit={this.addStep}>
-        <input type="text"
-                name="title"
-                onChange={this.updateTitle}
-                value= {this.state.title}
-                placeholder="Enter title..."/>
-        <input type="text"
-                name="body"
-                onChange={this.updateBody}
-                value= {this.state.body}
-                placeholder="Enter body..."/>
-        <button>Submit!</button>
-      </form>
+      <div>
+        <form onSubmit={this.addStep}>
+          <input type="text"
+                  name="title"
+                  onChange={this.updateTitle}
+                  value= {this.state.title}
+                  placeholder="Enter title..."/>
+          <input type="text"
+                  name="body"
+                  onChange={this.updateBody}
+                  value= {this.state.body}
+                  placeholder="Enter body..."/>
+          <button>Submit!</button>
+        </form>
+      </div>
     )
   }
 }

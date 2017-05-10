@@ -3,12 +3,11 @@ import StepForm from './step_form.jsx'
 import StepListItemContainer from './step_list_item_container'
 
 class StepList extends React.Component {
-  constructor(props) {
-    super(props)
+  componentDidMount() {
+    this.props.getAllTodoSteps(this.props.todo)
   }
 
   render() {
-    // debugger
     return(
       <div>
         <ul>
@@ -16,7 +15,9 @@ class StepList extends React.Component {
             <StepListItemContainer key={step.id} step={step}/>
           ))}
         </ul>
-        <StepForm todoId={this.props.todoId} receiveStep={this.props.receiveStep}/>
+        <StepForm todo_id={this.props.todo.id}
+                  createStep={this.props.createStep}
+                  errors={this.props.errors}/>
       </div>
     )
   }

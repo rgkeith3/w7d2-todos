@@ -8,8 +8,16 @@ class TodoList extends React.Component {
   }
 
   render() {
+    let errors;
+    if (this.props.errors) {
+      errors = this.props.errors.map( (error, idx) =>
+        <li key={idx}>{error}</li>)
+    }
     return (
       <div>
+        <ul className="errors">
+          { errors }
+        </ul>
         <ul>
           {this.props.todos.map(todo => (
             <TodoListItem key={todo.id}
@@ -19,8 +27,7 @@ class TodoList extends React.Component {
                           updateTodo={this.props.updateTodo}/>
           ))}
         </ul>
-        < TodoForm errors={this.props.errors}
-                    createTodo={this.props.createTodo}
+        < TodoForm  createTodo={this.props.createTodo}
                     clearErrors={this.props.clearErrors}/>
       </div>
     )
